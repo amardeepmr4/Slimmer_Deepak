@@ -16,6 +16,6 @@
 #define CMD_READ_TIMEOUT    50
 #define READ_TIMEOUT        100
 
- extern uint8_t message[MES_LEN];
+extern uint8_t message[MES_LEN];
 
 void handle(void);

@@ -6,6 +6,8 @@ add_executable(myDevice
         set_pwm.c
         uart_handler.h
         uart_handler.c
+	controlMessage.h
+	controlMessage.c
         )
 
 # pull in common dependencies and additional uart hardware support
