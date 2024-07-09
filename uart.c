@@ -1,39 +1,13 @@
-/**
- * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
-
-#include "pico/stdlib.h"
-#include "hardware/uart.h"
-#include "hardware/irq.h"
-#include "set_pwm.h"
-#include "uart_defines.h"
-#include "uart_handler.h"
-
-/// \tag::uart_advanced[]
+#include "uart.h"
 
 static int chars_rxed = 0;
 
 // RX interrupt handler
 void on_uart_rx() {
 	handle();
-/*
-    	while (uart_is_readable(UART_ID)) {
-        uint8_t ch = uart_getc(UART_ID);
-        // Can we send it back?
-        if (uart_is_writable(UART_ID)) {
-            // Change it slightly first!
-            ch++;
-            uart_putc(UART_ID, ch);
-        }
-        chars_rxed++;
-    }
-*/
 }
 
-int main() {
+int setup_uart() {
     // Set up our UART with a basic baud rate.
     uart_init(UART_ID, 2400);
     set_pwm();
@@ -73,8 +47,5 @@ int main() {
     // The handler will count them, but also reflect the incoming data back with a slight change!
     uart_puts(UART_ID, "\nHello, uart interrupts\n");
 
-    while (1)
-        tight_loop_contents();
 }
 
-/// \end:uart_advanced[]

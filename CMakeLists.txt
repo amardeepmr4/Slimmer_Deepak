@@ -1,5 +1,7 @@
 add_executable(myDevice
-        uart_advanced.c
+	main.c
+        uart.h
+        uart.c
         set_pwm.h
         set_pwm.c
         uart_handler.h
